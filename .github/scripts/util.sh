@@ -129,3 +129,24 @@ build_xf86drv_ac() {
     local tag_name="xlibre-xf86-$drv_name-$version"
     build_drv_ac "$repo_name" "$(xl_mirror $repo_name)" "$(drv_tag $drv_name $version)"
 }
+
+build_xxrdp() {
+    local curdir="`pwd`"
+    local xxrdp_ver="$1"
+    local xrdp_path="$curdir/xrdp"
+    local xxrdp_path="$curdir/xorgxrdp"
+
+    echo "::group::Build xorgxrdp"
+    git clone --depth 1 --branch v$xxrdp_ver\
+        https://github.com/neutrinolabs/xrdp "$xrdp_path"
+    git clone --depth 1 --branch v$xxrdp_ver\
+        https://github.com/neutrinolabs/xorgxrdp "$xxrdp_path"
+    (
+	    cd "$xxrdp_path"
+	    ./bootstrap
+	    ./configure XRDP_CFLAGS="-I$xrdp_path/common" --enable-glamor
+	    make install -j${FDO_CI_CONCURRENT:-4}
+    )
+    echo "::endgroup::"
+}
+

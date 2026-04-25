@@ -84,6 +84,7 @@ apt-get install -y \
 	libxv-dev \
 	mesa-common-dev \
 	meson \
+	nasm \
 	nettle-dev \
 	libpango1.0-dev \
 	pkg-config \

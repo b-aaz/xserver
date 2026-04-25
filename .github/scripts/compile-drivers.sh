@@ -8,8 +8,9 @@ export PKG_CONFIG_PATH="/usr/local/lib/x86_64-linux-gnu/pkgconfig/:$PKG_CONFIG_P
 export ACLOCAL_PATH="/usr/share/aclocal:/usr/local/share/aclocal"
 
 mkdir -p $DRV_BUILD_DIR
-cd $DRV_BUILD_DIR
 
+cd $DRV_BUILD_DIR
+build_xxrdp                                 0.10.5
 build_xf86drv_ac    input-elographics       25.0.0
 build_xf86drv_ac    input-evdev             25.0.0
 build_xf86drv_ac    input-joystick          25.0.0
@@ -64,3 +65,4 @@ build_xf86drv_ac    video-v4l               25.0.1
 build_xf86drv_ac    video-vbox              25.0.0
 build_xf86drv_ac    video-voodoo            25.0.0
 build_xf86drv_ac    video-xgi               25.0.0
+
